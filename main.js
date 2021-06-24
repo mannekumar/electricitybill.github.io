@@ -22,4 +22,11 @@ fetch("https://www.apeasternpower.com/getChatboxBill?ltscno=1525552719000009", {
 .then(response => response.json())
 
 // Displaying results to console
-.then(json => console.log(json));
+.then(json => {console.log(json)
+const myObj = json;
+  let text = "<table border='1'>"
+  for (let x in myObj) {
+    text += "<tr><td>" +x+":"+ myObj[x] + "</td></tr>";
+  }
+  text += "</table>"    
+document.getElementById("demo").innerHTML = text;});
