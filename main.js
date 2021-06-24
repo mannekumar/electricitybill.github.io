@@ -13,7 +13,8 @@ fetch("https://www.apeasternpower.com/getChatboxBill?ltscno=1525552719000009", {
 	// Adding headers to the request
 	headers: {
 		"Content-Type": "application/json",
-                    "Accept":"application/json"
+                    "Accept":"application/json",
+					"permissions-policy": "interest-cohort=()"
 		//"Access-Control-Allow-Origin": "https://www.apeasternpower.com"
 	}
 })
