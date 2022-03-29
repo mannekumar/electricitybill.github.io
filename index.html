@@ -1,10 +1,57 @@
-
+<!-- 
 <!DOCTYPE html>
 <html>
 <body>
 
 <h2>Make a table based on JSON data of consumer number.</h2>
 <script src="main.js"></script>
+
+<p id="demo"></p> -->
+
+
+
+<html>
+<body>
+
+<h2>Make a table based on JSON data of consumer number.</h2>
+<label for="fname">Service number:</label><br>
+<input type="text" id="servicenum" name="servicenum" value="1525552719000009">
+<button onclick="myFunction()">submit</button>
+<script>
+function myFunction(){
+var element = document.getElementById('servicenum').value;
+fetch("https://www.apeasternpower.com/getChatboxBill?ltscno="+element, {
+	
+	// Adding method type
+	method: "POST",
+	mode: 'no-cors',
+	
+	// Adding body or contents to send
+	body: JSON.stringify({hello:"hai"}),
+	
+	// Adding headers to the request
+	headers: {
+		"Content-Type": "application/json",
+                    "Accept":"application/json",
+					"permissions-policy": "interest-cohort=()"
+		//"Access-Control-Allow-Origin": "https://www.apeasternpower.com"
+	}
+})
+
+// Converting to JSON
+.then(response => response.json())
+
+// Displaying results to console
+.then(json => {console.log(json)
+const myObj = json;
+  let text = "<table border='1'>"
+  for (let x in myObj) {
+    text += "<tr><td>" +x+":"+ myObj[x] + "</td></tr>";
+  }
+  text += "</table>"    
+document.getElementById("demo").innerHTML = text;});
+}
+</script>
 
 <p id="demo"></p>
 
